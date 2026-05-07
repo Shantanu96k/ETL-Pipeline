@@ -57,7 +57,6 @@ CREATE TABLE fact_orders (
     PRIMARY KEY (order_id, product_id)
 );
 
--- INDEXES for query performance
 CREATE INDEX idx_fact_orders_date     ON fact_orders(order_date);
 CREATE INDEX idx_fact_orders_customer ON fact_orders(customer_id);
 CREATE INDEX idx_fact_orders_product  ON fact_orders(product_id);

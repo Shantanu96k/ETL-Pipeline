@@ -1,0 +1,26 @@
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+env/
+.venv/
+
+# Environment & credentials — NEVER commit these
+.env
+*.env
+config.ini
+db_config.py
+
+# Data files (if large)
+# data/raw/*.csv    ← uncomment if CSV is large
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -38,12 +38,8 @@ SELECT
     order_month,
     monthly_sales,
     prev_sales,
-    ROUND(
-        (monthly_sales - prev_sales) / NULLIF(prev_sales, 0) * 100, 2
-    ) AS mom_sales_growth_pct,
-    ROUND(
-        (monthly_profit - prev_profit) / NULLIF(prev_profit, 0) * 100, 2
-    ) AS mom_profit_growth_pct
+    ROUND((monthly_sales - prev_sales) / NULLIF(prev_sales, 0) * 100, 2) AS mom_sales_growth_pct,
+    ROUND((monthly_profit - prev_profit) / NULLIF(prev_profit, 0) * 100, 2) AS mom_profit_growth_pct
 FROM growth
 ORDER BY order_year, order_month;
 
@@ -54,9 +50,9 @@ ORDER BY order_year, order_month;
 WITH rfm_base AS (
     SELECT
         customer_id,
-        DATEDIFF(CURDATE(), MAX(order_date))   AS recency_days,
-        COUNT(DISTINCT order_id)               AS frequency,
-        ROUND(SUM(sales), 2)                   AS monetary
+        DATEDIFF(CURDATE(), MAX(order_date)) AS recency_days,
+        COUNT(DISTINCT order_id) AS frequency,
+        ROUND(SUM(sales), 2) AS monetary
     FROM fact_orders
     GROUP BY customer_id
 ),
